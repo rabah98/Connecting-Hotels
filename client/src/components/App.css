@@ -1,0 +1,191 @@
+.hotel-list {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+  margin-top: inherit;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Link {
+  display: inline-block;
+  width: 100px;
+  padding: 30px;
+  margin: "0 6px 6px";
+  background: black;
+  color: white;
+  font-size: x-large
+}
+
+.Link-profile {
+  display: inline-block;
+  width: 100px;
+  padding: 30px;
+  margin: "0 6px 6px";
+  background: black;
+  color: white;
+  float: right;
+  border-right:1px solid #bbb;
+  font-size: x-large
+}
+.Nav-Div {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #18171e;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 200px;
+  margin-right: auto;
+  width: 25em;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.signup-form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 45em;
+  margin-top: 120px;
+  /* margin-bottom: auto; */
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 40px;
+}
+.login-form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 45em;
+  margin-top: 120px;
+  border-radius: 5px;
+  background-color: #440ad7;
+  padding: 40px;
+}
+.hotel-card {
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: .25rem;
+  overflow: hidden;
+}
+.hotel-img {
+  width: 300px;
+  height: 450px;  
+  transition: transform 200ms ease-in-out;
+}
+
+.hotel-img:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.home {
+  margin-top: 150px;
+}
+input, label, input[type=text], input[type=number] {
+  padding: 10px;
+  width: 250px;
+  height: 50px;
+  font-size: x-large;
+}
+h1 {
+  text-align: center;
+}
+
+.search-button {
+  border-radius: 20px;
+  background-color: #000f0a;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 13px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.search-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.search-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.search-button:hover span {
+  padding-right: 25px;
+}
+
+.search-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.search-div {
+  margin-left: 100px;
+  margin-top: 50px;
+}

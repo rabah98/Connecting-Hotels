@@ -1,6 +1,5 @@
 const initialState = {
-    user: [], 
-    errors: [],
+    user: [],
     status: "idle",
   };
   
@@ -17,12 +16,6 @@ const initialState = {
           user: action.payload,
           status: "idle",
         };
-        case "user/userNotCreated":
-        return {
-          ...state,
-          errors: action.payload,
-          status: "unprocessable_entity",
-        };
         case "user/userLogin":
         return {
           ...state,
@@ -32,7 +25,7 @@ const initialState = {
         case "user/userNotCreated":
         return {
           ...state,
-          errors: action.payload,
+          user: {error: 'Not authorized'},
           status: "unprocessable_entity",
         };
       default:
@@ -54,7 +47,7 @@ const initialState = {
             })
           } else {
             res.json().then((data) => {
-            dispatch({ type: "user/userNotCreated", payload: data });
+            dispatch({ type: "user/userNotCreated", payload: "" });
           })
         }})
     };
@@ -71,7 +64,7 @@ const initialState = {
   }
   export function deletCurrentUser() {
     return function (dispatch) {
-      dispatch({ type: "user/userLoggedOut" });
+      dispatch({ type: "user/userNotCreated" });
       fetch('/logout', {
         method: 'DELETE'
       })
@@ -92,7 +85,7 @@ const initialState = {
           })
         } else {
           res.json().then((data) => {
-          dispatch({ type: "user/userNotCreated", payload: data });
+          dispatch({ type: "user/userNotCreated", payload: "" });
         })
       }})
     }

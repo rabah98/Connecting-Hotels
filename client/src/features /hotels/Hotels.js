@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HotelContainer from "./HotelContainer";
 import { fetchHotels } from "./hotelsSlice";
@@ -10,6 +10,10 @@ function Hotels() {
   useEffect(() => {
     dispatch(fetchHotels());
   }, []);
+  const [endDateStart, SetEndDateStart] = useState('')
+  function handleStartDate(e) {
+    SetEndDateStart(e.target.value)
+  }
 
   const hotelList = hotels.map(hotel => <HotelContainer key={hotel.id} hotel={hotel} />)
 
@@ -24,11 +28,12 @@ function Hotels() {
       >
       </input>
       <label for="start">Check-in</label>
-      <input 
+      <input
+        onChange={handleStartDate}
         type="date" 
         id="start" 
         name="staying-start"
-        min="2022-10-01" 
+        min="2022-10-01"
         max="2022-12-31"
         placeholder="Select date" 
         >
@@ -38,7 +43,7 @@ function Hotels() {
         type="date" 
         id="end" 
         name="staying-start"
-        min="2022-10-01" 
+        min={endDateStart} 
         max="2022-12-31"
         placeholder="Select date" 
         >

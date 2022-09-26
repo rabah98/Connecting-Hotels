@@ -20,7 +20,7 @@ const Login = () => {
       function handleSubmit (e) {
         e.preventDefault();
         dispatch(fetchLogin(formData));
-        { currentUser.error === 'Not authorized' ? navigate('/Signup' ) : navigate('/Profile' )}
+        navigate('/Profile' )
     }
     return (
         <div className='login-form'>

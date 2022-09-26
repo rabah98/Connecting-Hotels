@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import hotelsReducer from "./features /hotels/hotelsSlice";
 import userReducer from "./features /user/usersSlice";
+import roomsReducer from "./features /rooms /roomsSlice";
 
 const store = configureStore({
   reducer: {
@@ -8,6 +9,9 @@ const store = configureStore({
   },
   reducer: {
     user: userReducer,
+  },
+  reducer: {
+    rooms: roomsReducer,
   },
 });
 

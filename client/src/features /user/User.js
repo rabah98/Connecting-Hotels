@@ -96,77 +96,10 @@ const User = () => {
                     value={formData.password_confirmation}
                     onChange={handleChange}
                 />
-
-                {/* <label for="country">Country</label>
-                <select id="country" name="country">
-                <option value="canada">Canada</option>
-                <option value="usa">USA</option>
-                </select> */}
-            
                 <input type="submit" value="Submit" />
             </form>
 
             <button onClick={() => navigate('/' )}> Back to home </button>
-            {/* <form onSubmit={handleSubmit}>
-                <label htmlFor="first_name" className='signUpForm'>First Name:</label>
-                <input
-                    id="first_name-signup-input"
-                    type="text"
-                    name="first_name"
-                    value={formData.first_name}
-                    onChange={handleChange}
-                />
-                <label htmlFor="first_name">Last Name:</label>
-                <input
-                    id="last_name-signup-input"
-                    type="text"
-                    name="last_name"
-                    value={formData.last_name}
-                    onChange={handleChange}
-                />
-                <label htmlFor="username">Username:</label>
-                <input
-                    id="username-signup-input"
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                />
-                <label htmlFor="image_url">Your image_url:</label>
-                <input
-                    id="image_url-signup-input"
-                    type="text"
-                    name="image_url"
-                    value={formData.image_url}
-                    onChange={handleChange}
-                />
-                <label htmlFor="email">Email:</label>
-                <input
-                    id="email-signup-input"
-                    type="text"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
-                <label htmlFor="password">Password:</label>
-                <input
-                    id="password-signup-input"
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-                <label htmlFor="password_confirmation">Confirm Password:</label>
-                <input
-                    id="password_confirmation-signup-input"
-                    type="password"
-                    name="password_confirmation"
-                    value={formData.password_confirmation}
-                    onChange={handleChange}
-                />
-                <button type="submit">Submit</button>
-            </form> */}
-            {/* <button onClick={() => navigate('/' )}> back to home </button> */}
         </div>
     );
 };

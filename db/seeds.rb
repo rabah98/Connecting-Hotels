@@ -1,9 +1,61 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Hotel.destroy_all
+Room.destroy_all
+# Comment.destroy_all
 
-h1 = Hotel.create(name: "Hilton", location: "123 st", picture: "https://content.fortune.com/wp-content/uploads/2020/05/F500-2020-338-Hilton-.jpg", cancellation_policy: "no fee", email: "hilton@gmail.com", phone_number: 123456789)
+# User.reset_pk_sequence
+# Hotel.reset_pk_sequence
+# Room.reset_pk_sequence
+
+h1 = Hotel.create(name: "Hilton", location: "123 chicago st", picture: "https://content.fortune.com/wp-content/uploads/2020/05/F500-2020-338-Hilton-.jpg", city: "Chicago", email: "hilton@gmail.com", phone_number: 216456789)
+h2 = Hotel.create(name: "Le Méridien Essex", location: "800 South Michigan Avenue", picture: "https://www.kayak.com/rimg/kimg/9c/42/d712744a-5c83d7a1-0.jpg?width=720&height=576&crop=true", city: "Chicago", email: "essex@gmail.com", phone_number: 564236789)
+h3 = Hotel.create(name: "Arlo Midtown", location: "351 West 38th Street", picture: "https://cdn.thespaces.com/wp-content/uploads/2021/07/Arlo-Midtown_08.jpeg", city: "New York", email: "arlo@gmail.com", phone_number: 4534879599)
+h4 = Hotel.create(name: "Row", location: "700 8th Avenue", picture: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/27228652.jpg?k=633141f7583e8b6109b6272be90d2eb3edef6b538fd7ad79dceedd6ef80520a7&o=&hp=1", city: "New York", email: "row@gmail.com", phone_number: 562156789)
+h5 = Hotel.create(name: "Circus", location: "2880 Las Vegas Blvd S", picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/90/dd/ce/circus-circus-hotel-casino.jpg?w=700&h=-1&s=1", city: "Las Vegas", email: "circus@gmail.com", phone_number: 893456789)
+h6 = Hotel.create(name: "Wyndham Grand", location: "14651 Chelonia Pkwy", picture: "https://www.wyndhamgrandclearwater.com/assets/images/jpg/home-intro-inset.jpg", city: "Orlando", email: "grand@gmail.com", phone_number: 773456789)
+h7 = Hotel.create(name: "Ivory", location: "9261 e bay harbor dr", picture: "https://cf.bstatic.com/xdata/images/hotel/max500/269823969.jpg?k=eaae7315407c2e5b16b4049efe7535b21dfb2afb5e449fe1d1f1c9756215e79b&o=&hp=1", city: "Miami", email: "ivory@gmail.com", phone_number: 887456789)
+h8 = Hotel.create(name: "La Quinta Inn", location: "5249 W Century Blvd", picture: "https://media-cdn.tripadvisor.com/media/photo-s/23/6c/16/9e/exterior.jpg", city: "Los Angelos", email: "laquinta@gmail.com", phone_number: 997456789)
+h9 = Hotel.create(name: "Aventura", location: "123 st", picture: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/54978729.jpg?k=e637735333501e9bb4b68941889338ba05b752af9d06bfc5c74d965384044607&o=&hp=1", city: "Los Angelos", email: "aventura@gmail.com", phone_number: 744456789)
+h10 = Hotel.create(name: "Sleep Inn", location: "2208 ROYAL LANE", picture: "https://cf.bstatic.com/xdata/images/hotel/max500/169766592.jpg?k=9b99a5b5f79aeaed214e0c0e3d8f55e06c08c02f88ed500b867e59dcf6495393&o=&hp=1", city: "Dallas", email: "sleepinn@gmail.com", phone_number: 312456789)
+
+
+r1 = Room.create(room_type: "1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h1.id)
+r2 = Room.create(room_type: "Deluxe 2 Queens", price: 139, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/07df9e32.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h2.id)
+r3 = Room.create(room_type: "2 Double Beds", price: 99, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/684e8826.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h3.id)
+r4 = Room.create(room_type: "Suite, 1 King Bed", price: 299, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/w5000h3333x0y2-157a29ad.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h4.id)
+r5 = Room.create(room_type: "Deluxe Room, 2 Queen Beds", price: 199, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/3b8dd2a6.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h5.id)
+r6 = Room.create(room_type: "2 Queen Beds", price: 107, image: "https://images.trvl-media.com/hotels/1000000/20000/16000/15930/b5127de7.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h6.id)
+r7 = Room.create(room_type: "Suite, Multiple Beds", price: 70, image: "https://images.trvl-media.com/hotels/22000000/21050000/21041700/21041639/20fcb00e.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h10.id)
+r8 = Room.create(room_type: "1 King Bed with Sofa bed", price: 59, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/720d82ce.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h7.id)
+r9 = Room.create(room_type: "1 King Bed with Sofa bed", price: 69, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/fc89c3a4.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h8.id)
+r10 = Room.create(room_type: "1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h9.id)
+r11 = Room.create(room_type: "1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h10.id)
+r12 = Room.create(room_type: "Deluxe 2 Queens", price: 139, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/07df9e32.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h1.id)
+r13 = Room.create(room_type: "2 Double Beds", price: 99, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/684e8826.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h2.id)
+r14 = Room.create(room_type: "Suite, 1 King Bed", price: 299, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/w5000h3333x0y2-157a29ad.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h3.id)
+r15 = Room.create(room_type: "Deluxe Room, 2 Queen Beds", price: 199, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/3b8dd2a6.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h4.id)
+r16 = Room.create(room_type: "Suite, 1 King Bed", price: 107, image: "https://images.trvl-media.com/hotels/1000000/20000/16000/15930/b5127de7.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h5.id)
+r17 = Room.create(room_type: "Two Twin Beds", price: 70, image: "https://images.trvl-media.com/hotels/22000000/21050000/21041700/21041639/20fcb00e.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h6.id)
+r18 = Room.create(room_type: "Two Twin Beds", price: 59, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/720d82ce.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h7.id)
+r19 = Room.create(room_type: "Quadruple Room", price: 69, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/fc89c3a4.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h8.id)
+r20 = Room.create(room_type: "Room, 1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h9.id)
+r21 = Room.create(room_type: "1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h10.id)
+r22 = Room.create(room_type: "Deluxe 2 Queens", price: 139, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/07df9e32.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h1.id)
+r23 = Room.create(room_type: "2 Double Beds", price: 99, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/684e8826.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h2.id)
+r24 = Room.create(room_type: "Suite, 1 King Bed", price: 299, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/w5000h3333x0y2-157a29ad.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h3.id)
+r25 = Room.create(room_type: "Deluxe Room, 2 Queen Beds", price: 199, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/3b8dd2a6.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h4.id)
+r26 = Room.create(room_type: "Suite, 1 King Bed", price: 107, image: "https://images.trvl-media.com/hotels/1000000/20000/16000/15930/b5127de7.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h5.id)
+r27 = Room.create(room_type: "Two Twin Beds", price: 70, image: "https://images.trvl-media.com/hotels/22000000/21050000/21041700/21041639/20fcb00e.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h6.id)
+r28 = Room.create(room_type: "Two Twin Beds", price: 59, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/720d82ce.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h7.id)
+r29 = Room.create(room_type: "Quadruple Room", price: 69, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/fc89c3a4.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h8.id)
+r30 = Room.create(room_type: "Room, 1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h9.id)
+r31 = Room.create(room_type: "1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h10.id)
+r32 = Room.create(room_type: "Deluxe 2 Queens", price: 139, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/07df9e32.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h1.id)
+r33 = Room.create(room_type: "2 Double Beds", price: 99, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/684e8826.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h2.id)
+r34 = Room.create(room_type: "Suite, 1 King Bed", price: 299, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/w5000h3333x0y2-157a29ad.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h3.id)
+r35 = Room.create(room_type: "Deluxe Room, 2 Queen Beds", price: 199, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/3b8dd2a6.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h4.id)
+r36 = Room.create(room_type: "Suite, 1 King Bed", price: 107, image: "https://images.trvl-media.com/hotels/1000000/20000/16000/15930/b5127de7.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h5.id)
+r37 = Room.create(room_type: "Two Twin Beds", price: 70, image: "https://images.trvl-media.com/hotels/22000000/21050000/21041700/21041639/20fcb00e.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h6.id)
+r38 = Room.create(room_type: "Two Twin Beds", price: 59, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/720d82ce.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h7.id)
+r39 = Room.create(room_type: "Quadruple Room", price: 69, image: "https://images.trvl-media.com/hotels/5000000/4410000/4408100/4408039/fc89c3a4.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h8.id)
+r40 = Room.create(room_type: "Room, 1 King Bed", price: 149, image: "https://images.trvl-media.com/hotels/49000000/48670000/48669400/48669360/4b28c418.jpg?impolicy=resizecrop&rw=1200&ra=fit", hotel_id: h9.id)

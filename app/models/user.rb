@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_many :reserved_rooms, dependent: :destroy
   has_many :rooms, through: :reserved_rooms
 
+  validates :first_name, :last_name, presence: true
+  validates :username, :email, presence: true, uniqueness: true
+  
+
 
   private
   

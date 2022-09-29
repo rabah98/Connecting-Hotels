@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {React, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletCurrentUser } from './usersSlice';
@@ -8,7 +8,6 @@ import UserRooms from './UserRooms';
 const UserProfil = () => {
     const navigate = useNavigate()
     const user = useSelector((state) => state.user.user);
-    console.log(user)
     const dispatch = useDispatch()
     function handleLogout() {
         dispatch(deletCurrentUser())
@@ -17,13 +16,10 @@ const UserProfil = () => {
 
     function roomArray()  {
         if (user.rooms) {
-            const roomList = user.rooms.map(room => <UserRooms key={room.id} room={room} />)
+            const roomList = user.rooms.map(room => <UserRooms key={room.id} room={room}/>)
             return roomList
         }
     }  
-    
-    
-
     const [formData, setFormData] = useState({
             name: "",
             location: "",
@@ -41,13 +37,14 @@ const UserProfil = () => {
     function handleSubmit (e) {
         e.preventDefault();
         dispatch(fetchAddHotel(formData));
+        navigate('/AddRooms')
     }
     return (
-        <div>
+        <div className='profile-div'>
             <h1>{user.first_name}</h1>
             <h1>{user.last_name}</h1>
-            <button onClick={handleLogout}>Log out</button>
             <div className='add-hotel-div'>
+                <h1>List your hotel</h1>
                 <form onSubmit={handleSubmit} >
                     <input
                         type="text" 
@@ -103,6 +100,7 @@ const UserProfil = () => {
                     {roomArray()}
                 </div>
             </div>
+            <button className="search-button" onClick={handleLogout}>Log out</button>
         </div>
     );
 };

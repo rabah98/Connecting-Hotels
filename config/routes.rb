@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :reserved_rooms, only: [ :create, :destroy ]
-  resources :rooms, only: [ :create]
+  resources :rooms, only: [ :create, :update]
   resources :users, only: [ :create]
   resources :hotels, only: [ :index, :create]
   

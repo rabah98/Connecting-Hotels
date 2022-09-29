@@ -22,6 +22,7 @@ const Rooms = () => {
     }
     return (
         <div className='add-room'>
+            <h1>Add your hotel rooms</h1>
             <form onSubmit={handleSubmit} >
                 <input
                     type="text" 

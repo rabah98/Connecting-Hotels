@@ -25,8 +25,32 @@ const initialState = {
         case "user/userNotCreated":
         return {
           ...state,
-          user: {error: 'Not authorized'},
+          user: 'Not authorized',
           status: "unprocessable_entity",
+        };
+        case "user/reserveRoom":
+        return {
+          ...state,
+          user: {...state.user, rooms:[...state.user.rooms, action.payload] } 
+        };
+        case "user/roomNotReserved":
+        return {
+          ...state,
+          error: {error: 'Not Reserved'},
+          status: "unprocessable_entity",
+        };
+        case "user/deleteEditedRoom":
+          const rsrvdRooms = state.user.rooms.filter(room => room.id !== action.payload)
+        return {
+          ...state,
+          user: {...state.user, rooms: rsrvdRooms },
+          status: "idle",
+        };
+        case "user/editReservedRoom":
+        return {
+          ...state,
+          user: {...state.user, rooms:[action.payload, ...state.user.rooms] },
+          status: "idle",
         };
       default:
         return state;
@@ -89,4 +113,50 @@ const initialState = {
         })
       }})
     }
+  }
+
+  export function fetchReservRoom(room) {
+    return function (dispatch) {
+      dispatch({ type: "user/userLoading" });
+      fetch("/reserved_rooms", {
+        method: "POST",
+        headers: { "Content-Type": 'application/json' },
+        body: JSON.stringify(room)
+    })
+      .then((res) => {
+        if(res.ok){
+          res.json().then((data) => {
+            dispatch({ type: "user/reserveRoom", payload: data });
+          })
+        } else {
+          res.json().then((data) => {
+          dispatch({ type: "user/roomNotReserved", payload: "" });
+        })
+      }})
+    }
+  }
+  export function userEditReservedRoom(id, formData) {
+    return function (dispatch) {
+      dispatch({ type: "user/deleteEditedRoom", payload: id })
+      fetch(`/rooms/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": 'application/json' },
+        body: JSON.stringify(formData)
+    })
+    .then((res) => {
+      if(res.ok){
+        res.json().then((data) => { 
+          dispatch({ type: "user/editReservedRoom", payload: data });
+        })
+      }
+    })
+  }}
+
+  export function deletReservedRoom(id) {
+    return function (dispatch) {
+      dispatch({ type: "user/deleteEditedRoom", payload: id });
+      fetch(`/reserved_rooms/${id}`, {
+        method: "DELETE",
+      })
+    };
   }

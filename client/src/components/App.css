@@ -63,19 +63,26 @@
   border-right:1px solid #bbb;
   font-size: x-large
 }
+.rooute-notfound {
+  margin-top: 300px;
+}
 .Nav-Div {
+  display: inline;
   overflow: hidden;
   background-color: #333;
   position: fixed;
   top: 0;
   width: 100%;
 }
+.link-div {
+  display: inline;
+}
 
 input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
+  display: list-item;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -91,7 +98,7 @@ input[type=submit] {
   cursor: pointer;
   margin-left: 200px;
   margin-right: auto;
-  width: 25em;
+  width: 15em;
 }
 
 input[type=submit]:hover {
@@ -101,9 +108,8 @@ input[type=submit]:hover {
 .signup-form {
   margin-left: auto;
   margin-right: auto;
-  width: 45em;
+  width: 52em;
   margin-top: 120px;
-  /* margin-bottom: auto; */
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 40px;
@@ -194,4 +200,17 @@ h1 {
 }
 .add-room {
   margin-top: 200px;
+}
+.profile-div {
+  margin-top: 100px;
+}
+.room-card-div {
+  margin-top: 100px;
+}
+.room-card-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 20px;
 }

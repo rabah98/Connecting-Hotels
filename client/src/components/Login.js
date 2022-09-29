@@ -11,17 +11,21 @@ const Login = () => {
         username: "",
         password: "",
     });
+
     const handleChange = (e) => {
         setFormData({
           ...formData,
           [e.target.name]: e.target.value,
         });
-      };
-      function handleSubmit (e) {
+    };
+
+    function handleSubmit (e) {
         e.preventDefault();
         dispatch(fetchLogin(formData));
-        navigate('/Profile' )
+        // { currentUser.error === 'Not authorized' ? navigate('/Login' ) : navigate('/Profile' )}
     }
+
+
     return (
         <div className='login-form'>
             <h1>Welcome back!</h1>
@@ -46,7 +50,7 @@ const Login = () => {
             />
             <input type="submit" value="Submit" />
             </form>
-            <button onClick={() => navigate('/' )}> back to home </button>
+            <button className='search-button' onClick={() => navigate('/' )}> back to home </button>
         </div>
     );
 };

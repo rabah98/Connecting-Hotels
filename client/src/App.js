@@ -9,14 +9,12 @@ import Login from './components/Login';
 import UserProfil from './features /user/UserProfile';
 import { fetchCurrentUser } from './features /user/usersSlice';
 import RoomsList from './features /rooms /RoomLists';
-// import RoomCard from './features /rooms /RoomCard';
+import Rooms from './features /rooms /Rooms';
 
 
 
 const App = () => {
   const user = useSelector((state) => state.user);
-  console.log(user)
-  console.log(user)
   const dispatch = useDispatch()
   useEffect( () => {
     dispatch(fetchCurrentUser());
@@ -28,9 +26,14 @@ const App = () => {
         <div className='Nav-Div'>
           <nav>
             <Link className='Link' to='/' >Home</Link>
-            { user.user.error === 'Not authorized' ? "" : <Link className='Link-profile' to='/Profile' >Profile</Link> }
-            <Link className='Link' to='/Signup' >Sign up</Link>
-            <Link className='Link' to='/Login' >Log in</Link>
+            { user.user === 'Not authorized' ? 
+              <div className='link-div'>
+                <Link className='Link' to='/Signup' >Sign up</Link>
+                <Link className='Link' to='/Login' >Log in</Link>
+              </div>
+            : 
+              <Link className='Link-profile' to='/Profile' >Profile</Link> 
+            }
           </nav>
         </div>
         <Routes>
@@ -39,6 +42,8 @@ const App = () => {
           <Route path="/Profile" element= { <UserProfil />} />
           <Route path="/signup" element= { <User />} />
           <Route path="/login" element= { <Login />} />
+          <Route path="/AddRooms" element= { <Rooms />} />
+          <Route path='*' element= { <h1 className='rooute-notfound'>Page Not Found 404</h1>} />
         </Routes>
       </BrowserRouter>
     </div>

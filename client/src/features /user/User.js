@@ -5,7 +5,6 @@ import { fetchUser } from './usersSlice';
 
 const User = () => {
     const currentUser = useSelector((state) => state.user.user)
-    console.log(currentUser)
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
@@ -26,7 +25,7 @@ const User = () => {
     function handleSubmit (e) {
         e.preventDefault();
         dispatch(fetchUser(formData));
-        { currentUser.error === 'Not authorized' ? navigate('/Signup' ) : navigate('/Profile' )}
+        // { currentUser.error === 'Not authorized' ? navigate('/Signup' ) : navigate('/Profile' )}
     }
     return (
         <div className='signup-form'>
@@ -99,7 +98,7 @@ const User = () => {
                 <input type="submit" value="Submit" />
             </form>
 
-            <button onClick={() => navigate('/' )}> Back to home </button>
+            <button className="search-button" onClick={() => navigate('/' )}> Back to home </button>
         </div>
     );
 };

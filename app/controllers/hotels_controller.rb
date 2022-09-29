@@ -1,4 +1,5 @@
 class HotelsController < ApplicationController
+    skip_before_action :authorized_user, except: :create
 
     def index 
         hotels = Hotel.all 

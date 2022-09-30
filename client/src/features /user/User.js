@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from './usersSlice';
 
 const User = () => {
-    const currentUser = useSelector((state) => state.user.user)
+    const currentUser = useSelector((state) => state.user)
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
@@ -25,7 +25,13 @@ const User = () => {
     function handleSubmit (e) {
         e.preventDefault();
         dispatch(fetchUser(formData));
-        // { currentUser.error === 'Not authorized' ? navigate('/Signup' ) : navigate('/Profile' )}
+    }
+    console.log(currentUser)
+    if (currentUser.user) navigate('/Profile' )
+    function showErrors() {
+        if (currentUser.errors === "You must be logged in to access your account") return <h2>Please sign up if you do not have an account</h2>
+        const errorsLi = currentUser.errors.map(error => <li>{error}</li>)
+        return errorsLi  
     }
     return (
         <div className='signup-form'>
@@ -97,7 +103,14 @@ const User = () => {
                 />
                 <input type="submit" value="Submit" />
             </form>
-
+            <div>{ (currentUser.errors) 
+                ? 
+                <div>
+                    {showErrors()}
+                </div> 
+                : 
+                "" 
+            }</div>
             <button className="search-button" onClick={() => navigate('/' )}> Back to home </button>
         </div>
     );

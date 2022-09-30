@@ -6,7 +6,7 @@ import { fetchLogin } from '../features /user/usersSlice';
 const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const currentUser = useSelector((state) => state.user.user)
+    const currentUser = useSelector((state) => state.user)
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -22,8 +22,11 @@ const Login = () => {
     function handleSubmit (e) {
         e.preventDefault();
         dispatch(fetchLogin(formData));
-        // { currentUser.error === 'Not authorized' ? navigate('/Login' ) : navigate('/Profile' )}
     }
+
+    if (currentUser.user) navigate('/Profile' )
+    
+    console.log(currentUser)
 
 
     return (
@@ -50,6 +53,7 @@ const Login = () => {
             />
             <input type="submit" value="Submit" />
             </form>
+            <div>{ (currentUser.errors) ? <h1>{currentUser.errors}</h1> : "" }</div>
             <button className='search-button' onClick={() => navigate('/' )}> back to home </button>
         </div>
     );

@@ -1,6 +1,7 @@
 const initialState = {
-    user: [],
+    user: false,
     status: "idle",
+    errors: false,
   };
   
   export default function userReducer(state = initialState, action) {
@@ -8,24 +9,34 @@ const initialState = {
       case "user/userLoading":
         return {
           ...state,
+          user: false,
           status: "loading",
         };
       case "user/userCreated":
         return {
           ...state,
           user: action.payload,
+          errors: false,
           status: "idle",
         };
         case "user/userLogin":
         return {
           ...state,
           user: action.payload,
+          errors: false,
           status: "idle",
         };
         case "user/userNotCreated":
         return {
           ...state,
-          user: 'Not authorized',
+          user: false,
+          errors: action.payload,
+          status: "unprocessable_entity",
+        };
+        case "user/loggingOut":
+        return {
+          ...state,
+          user: false,
           status: "unprocessable_entity",
         };
         case "user/reserveRoom":
@@ -36,7 +47,7 @@ const initialState = {
         case "user/roomNotReserved":
         return {
           ...state,
-          error: {error: 'Not Reserved'},
+          errors: action.payload,
           status: "unprocessable_entity",
         };
         case "user/deleteEditedRoom":
@@ -71,7 +82,8 @@ const initialState = {
             })
           } else {
             res.json().then((data) => {
-            dispatch({ type: "user/userNotCreated", payload: "" });
+              const errors = data.errors
+              dispatch({ type: "user/userNotCreated", payload: errors });
           })
         }})
     };
@@ -80,15 +92,22 @@ const initialState = {
     return function (dispatch) {
       dispatch({ type: "user/userLoading" });
       fetch("/me")
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({ type: "user/userCreated", payload: data });
-        });
+      .then((res) => {
+        if(res.ok){
+          res.json().then((data) => {
+            dispatch({ type: "user/userCreated", payload: data });
+          })
+        } else {
+          res.json().then((data) => {
+            const errors = data.errors
+          dispatch({ type: "user/userNotCreated", payload: errors });
+        })
+      }})
     };
   }
   export function deletCurrentUser() {
     return function (dispatch) {
-      dispatch({ type: "user/userNotCreated" });
+      dispatch({ type: "user/loggingOut" });
       fetch('/logout', {
         method: 'DELETE'
       })
@@ -109,7 +128,8 @@ const initialState = {
           })
         } else {
           res.json().then((data) => {
-          dispatch({ type: "user/userNotCreated", payload: "" });
+            const errors = data.errors
+            dispatch({ type: "user/userNotCreated", payload: errors });
         })
       }})
     }
@@ -117,7 +137,7 @@ const initialState = {
 
   export function fetchReservRoom(room) {
     return function (dispatch) {
-      dispatch({ type: "user/userLoading" });
+      // dispatch({ type: "user/userLoading" });
       fetch("/reserved_rooms", {
         method: "POST",
         headers: { "Content-Type": 'application/json' },
@@ -130,7 +150,8 @@ const initialState = {
           })
         } else {
           res.json().then((data) => {
-          dispatch({ type: "user/roomNotReserved", payload: "" });
+            const errors = data.errors
+            dispatch({ type: "user/roomNotReserved", payload: errors });
         })
       }})
     }
@@ -148,7 +169,12 @@ const initialState = {
         res.json().then((data) => { 
           dispatch({ type: "user/editReservedRoom", payload: data });
         })
-      }
+      }else {
+        res.json().then((data) => {
+          const errors = data.errors
+          dispatch({ type: "user/roomNotReserved", payload: errors });
+      })
+    }
     })
   }}
 

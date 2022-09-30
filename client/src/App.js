@@ -18,22 +18,22 @@ const App = () => {
   const dispatch = useDispatch()
   useEffect( () => {
     dispatch(fetchCurrentUser());
-  }, [])
-  
+  },[])
   return (
     <div>
       <BrowserRouter>
         <div className='Nav-Div'>
           <nav>
             <Link className='Link' to='/' >Home</Link>
-            { user.user === 'Not authorized' ? 
+            { user.status === "unprocessable_entity" ? 
               <div className='link-div'>
                 <Link className='Link' to='/Signup' >Sign up</Link>
                 <Link className='Link' to='/Login' >Log in</Link>
               </div>
-            : 
-              <Link className='Link-profile' to='/Profile' >Profile</Link> 
-            }
+              :
+              ""
+            }       
+            { user.user ? <Link className='Link-profile' to='/Profile' >Profile</Link> : "" }
           </nav>
         </div>
         <Routes>

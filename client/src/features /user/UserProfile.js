@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletCurrentUser } from './usersSlice';
@@ -7,11 +7,15 @@ import UserRooms from './UserRooms';
 
 const UserProfil = () => {
     const navigate = useNavigate()
+    const currentUser = useSelector((state) => state.user)
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch()
+    useEffect(() => {
+        if ( currentUser.status !== "idle" ) navigate('*')
+    }, [currentUser.errors])
     function handleLogout() {
         dispatch(deletCurrentUser())
-        navigate('/')
+        navigate('/Login')
     }
 
     function roomArray()  {

@@ -9,17 +9,18 @@ class UsersController < ApplicationController
     
     def show
         user = User.find_by(id: session[:user_id])
-        if user
-            render json: user, status: :ok
-        else
-            render json: { error: "Not authorized" }, status: :unauthorized
-        end
+        render json: user, status: :ok
     end
 
     def update
         user = User.find(params[:id])
         user.update!(user_params)
         render json: user, status: :accepted
+    end
+    def destroy
+        user = User.find_by(id: params[:id])
+        user.destroy
+        head :no_content
     end
 
     def my_rooms

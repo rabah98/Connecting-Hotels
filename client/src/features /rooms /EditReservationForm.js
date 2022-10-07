@@ -31,14 +31,14 @@ const EditReservationForm = ({room}) => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit} className='boking-form' >
                 <label htmlFor="start">Check-in</label>
                 <input
                     onChange={handleStartDate}
                     type="date" 
                     id="start" 
                     name="checkin"
-                    min="2022-10-01"
+                    min="2022-10-06"
                     max="2022-12-31"
                     placeholder="Select date" 
                 >

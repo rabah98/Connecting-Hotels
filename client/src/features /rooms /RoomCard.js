@@ -23,7 +23,6 @@ const RoomCard = (room) => {
         checkout: 0,
         guests: 0,
     });
-
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -45,50 +44,52 @@ const RoomCard = (room) => {
    
      return (
         <div className='room-card-div'>
-            <h1>{room.room.room_type}</h1>
-            <img className='room-card-img' src={room.room.image} alt="room picture" />
-            <h1>${room.room.price}</h1>
-            { user.id ? 
-                isBooked ? 
-                    <button class="search-button" onClick={handleUnBooking} > Cancel booking</button>
-                    : 
-                    <form onSubmit={handleSubmit} >
-                        <label htmlFor="start">Check-in</label>
-                        <input
-                            onChange={handleStartDate}
-                            type="date" 
-                            id="start" 
-                            name="checkin"
-                            min="2022-10-01"
-                            max="2022-12-31"
-                            placeholder="Select date" 
-                        >
-                        </input>
-                        <label htmlFor="end">Check-out</label>
-                        <input 
-                            type="date" 
-                            id="end" 
-                            name="checkout"
-                            onChange={handleChange}
-                            min={endDateStart} 
-                            max="2022-12-31"
-                            placeholder="Select date" 
-                            >
-                        </input>
-                        <label >Guests</label>
-                        <input 
-                            type="number"
-                            name="guests"
-                            onChange={handleChange}
-                            min="1"
-                            max="3"
-                        >
-                        </input>
-                        <button class="search-button" ><span>Book </span></button>
-                    </form>
-            : <h1>Please login/signup to book a room</h1>
-            }
+            <div>
+                <img className='room-card-img' src={room.room.image} alt="room picture" />
+                <h1>{room.room.room_type}</h1>
+                <h1>${room.room.price}</h1>
             
+                { user.id ? 
+                    isBooked ? 
+                        <button className="search-button" onClick={handleUnBooking} > Cancel booking</button>
+                        : 
+                        <form onSubmit={handleSubmit} className='boking-form'>
+                            <label htmlFor="start">Check-in</label>
+                            <input
+                                onChange={handleStartDate}
+                                type="date" 
+                                id="start" 
+                                name="checkin"
+                                min="2022-10-06"
+                                max="2022-12-31"
+                                placeholder="Select date" 
+                            >
+                            </input>
+                            <label htmlFor="end">Check-out</label>
+                            <input 
+                                type="date" 
+                                id="end" 
+                                name="checkout"
+                                onChange={handleChange}
+                                min={endDateStart} 
+                                max="2022-12-31"
+                                placeholder="Select date" 
+                                >
+                            </input>
+                            <label >Guests</label>
+                            <input 
+                                type="number"
+                                name="guests"
+                                onChange={handleChange}
+                                min="1"
+                                max="3"
+                            >
+                            </input>
+                            <button className="search-button" ><span>Book </span></button>
+                        </form>
+                : <h1>Please login/signup to book a room</h1>
+                }
+            </div>
         </div>
     );
 };

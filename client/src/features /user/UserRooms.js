@@ -16,21 +16,23 @@ const UserRooms = ({room}) => {
     }
    
     return (
-        <div>
-            <img className='room-card-img' src={room.image} />
-            <h1>{room.room_type}</h1>
-            <h1>${room.price}</h1>
-            <h2>From {room.checkin} to {room.checkout} with {room.guests} guests</h2>
-            <button className="search-button" onClick={handleUnBooking} >cancel your booking</button>
-            {editMode ? (
-                <div>
-                    <EditReservationForm room={room}/>
-                    <button className="search-button" onClick={handleEditBooking} >cancel editing</button>
-                </div>
+        <div className='user-rooms'>
+            <div>
+                <img className='room-card-img' src={room.image} />
+                <h1>{room.room_type}</h1>
+                <h1>${room.price}</h1>
+                <h2>Note: Your reservation from {room.checkin} to {room.checkout} with {room.guests} guests has been confirmed</h2>
+                <button className="search-button" onClick={handleUnBooking} >cancel your booking</button>
+                {editMode ? (
+                    <div>
+                        <EditReservationForm room={room}/>
+                        <button className="search-button" onClick={handleEditBooking} >cancel editing</button>
+                    </div>
 
-            ) : (
-            <button className="search-button" onClick={handleEditBooking} >Edit your booking</button>
-            )}
+                ) : (
+                <button className="search-button" onClick={handleEditBooking} >Edit your booking</button>
+                )}
+            </div>
         </div>
     );
 };

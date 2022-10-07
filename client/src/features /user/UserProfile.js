@@ -3,16 +3,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deletCurrentUser } from './usersSlice';
 import { fetchAddHotel } from '../hotels/hotelsSlice';
+import { deleteProfile } from './usersSlice';
 import UserRooms from './UserRooms';
 
 const UserProfil = () => {
+    const default_img_url =
+    "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg";
     const navigate = useNavigate()
     const currentUser = useSelector((state) => state.user)
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch()
     useEffect(() => {
-        if ( currentUser.status !== "idle" ) navigate('*')
+        if ( currentUser.status !== "idle" ) navigate('/notFound')
     }, [currentUser.errors])
+
+    function handleDelete() {
+        dispatch(deleteProfile(user.id))
+        navigate('/Signup')
+    }
+
     function handleLogout() {
         dispatch(deletCurrentUser())
         navigate('/Login')
@@ -45,66 +54,19 @@ const UserProfil = () => {
     }
     return (
         <div className='profile-div'>
-            <h1>{user.first_name}</h1>
-            <h1>{user.last_name}</h1>
-            <div className='add-hotel-div'>
-                <h1>List your hotel</h1>
-                <form onSubmit={handleSubmit} >
-                    <input
-                        type="text" 
-                        id="name" 
-                        name="name" 
-                        placeholder="Hotel name.." 
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-                    <input 
-                        type="text" 
-                        id="location" 
-                        name="location" 
-                        placeholder="Hotel address.." 
-                        value={formData.location}
-                        onChange={handleChange}
-                    />
-                    <input
-                        id="picture"
-                        type="text"
-                        name="picture"
-                        placeholder="Hotel picture.." 
-                        value={formData.picture}
-                        onChange={handleChange}
-                    />
-                    <input
-                        id="cancellation-policy"
-                        type="text"
-                        name="cancellation_policy"
-                        placeholder="City.."
-                        value={formData.cancellation_policy}
-                        onChange={handleChange}
-                    />
-                    <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        placeholder="Your hotel email.." 
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-                    <input
-                        id="phone-number"
-                        type="number"
-                        name="phone_number"
-                        placeholder="Your hotel phone number.." 
-                        value={formData.phone_number}
-                        onChange={handleChange}
-                    />
-                    <input type="submit" value="Submit" />
-                </form>
-                <div>
-                    {roomArray()}
-                </div>
+            <div className='profile'>
+                <img className='profile-img' src={ user.image_url ? user.image_url : default_img_url} alt="User Image" />
+                <h1>{user.first_name} {user.last_name}</h1>
+                <h1>{user.username}</h1>
+                <h1>{user.email}</h1>
+                <button className="search-button" onClick={handleLogout}>Log out</button>
+                <br></br>
+                <br></br>
+                <button className="search-button" onClick={handleDelete}>Delete</button>
             </div>
-            <button className="search-button" onClick={handleLogout}>Log out</button>
+            <div className='available-rooms' >
+                {roomArray()}
+            </div>
         </div>
     );
 };

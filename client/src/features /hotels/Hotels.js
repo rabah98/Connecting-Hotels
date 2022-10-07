@@ -22,7 +22,7 @@ function Hotels() {
 
   return (
     <div className="home">
-      <h1>Welcome to Connecting Hotel</h1>
+      <h1>🛏 Welcome to Connecting Hotel 🛏</h1>
       <label >Location</label>
       <input 
         type="text"

@@ -1,9 +1,13 @@
 import {React, useState} from 'react';
 import { fetchAddroom } from './roomsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Rooms = () => {
     const dispatch = useDispatch()
+    const currentUser = useSelector((state) => state.user)
+    const navigate = useNavigate()
+    if ( currentUser.status !== "idle" ) navigate('/notFound')
     const [formData, setFormData] = useState({
         type: "",
         price: "",

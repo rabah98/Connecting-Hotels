@@ -1,12 +1,20 @@
 .hotel-list {
+  
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
-  padding: 10px;
+  /* grid-gap: 5px; */
   margin-top: inherit;
+  margin: 30px;
 }
-
+.user-rooms {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: inline;
+  margin-top: inherit;
+  margin: 30px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -124,14 +132,17 @@ input[type=submit]:hover {
   padding: 40px;
 }
 .hotel-card {
+  margin: 20px;
+  height: 52em;
   padding: 1rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: .25rem;
   overflow: hidden;
 }
 .hotel-img {
-  width: 700px;
-  height: 750px;  
+  margin-top: 0%;
+  width: 550px;
+  height: 550px;  
   transition: transform 200ms ease-in-out;
 }
 
@@ -205,12 +216,41 @@ h1 {
   margin-top: 100px;
 }
 .room-card-div {
-  margin-top: 100px;
+  text-align: center;
+  border-style: solid;
+  border-color: #440ad7;
 }
 .room-card-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  border-radius: 20px;
+  width: 100%;
+}
+.roomlist-div {
+  margin-top: 200px;
+} 
+.available-rooms {
+  margin-top: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 100px;
+}
+.boking-form {
+  display:grid;
+
+}
+.profile {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-style: solid;
+  border-color: chocolate;
+}
+.profile-img {
+  width: 500px;
+  height: 500px;
+  margin-top: 20px;
+  margin-left: 125px;
+  border-radius: 100%;
 }

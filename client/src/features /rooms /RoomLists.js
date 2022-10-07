@@ -7,8 +7,11 @@ const RoomsList = ({}) => {
     const rooms = hotels.hotels[hotels.id].rooms
     const roomsArray = rooms.map( room => <RoomCard key={room.id} room={room} />) 
     return (
-        <div>
-            {roomsArray}
+        <div className='roomlist-div'>
+            <h1>Available Rooms</h1>
+            <div className='available-rooms'>
+                {roomsArray}
+            </div>
         </div>
     );
 };

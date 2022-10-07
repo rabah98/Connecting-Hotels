@@ -20,9 +20,6 @@ const HotelContainer = ({hotel}) => {
                 <h3>{hotel.city}</h3>
                 <h3>Hotel email: {hotel.email}</h3>
                 <h3>Hotel phone number: {hotel.phone_number}</h3>
-                <p>starting from</p>
-                <p>rating</p>
-                <p>review</p>
             </card>
         </div>
     );

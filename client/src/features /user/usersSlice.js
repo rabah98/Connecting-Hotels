@@ -113,6 +113,16 @@ const initialState = {
       })
     };
   }
+
+  export function deleteProfile(id) {
+    return function (dispatch) {
+      dispatch({ type: "user/loggingOut" });
+      fetch(`/users/${id}`, {
+        method: 'DELETE'
+      })
+    };
+  }
+
   export function fetchLogin(userData) {
     return function (dispatch) {
       dispatch({ type: "user/userLoading" });
